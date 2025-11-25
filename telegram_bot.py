@@ -44,7 +44,17 @@ class TelegramNotifier:
             return
         
         try:
-            asyncio.run(self._send_message_async(message, silent))
+            # Get or create event loop
+            try:
+                loop = asyncio.get_event_loop()
+                if loop.is_closed():
+                    loop = asyncio.new_event_loop()
+                    asyncio.set_event_loop(loop)
+            except RuntimeError:
+                loop = asyncio.new_event_loop()
+                asyncio.set_event_loop(loop)
+            
+            loop.run_until_complete(self._send_message_async(message, silent))
         except Exception as e:
             logger.error(f"Failed to send Telegram message: {e}")
     
