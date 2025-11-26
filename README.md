@@ -1,6 +1,6 @@
-# BTC/USDT Trading Bot
+# Multi-Pair Crypto Trading Bot
 
-Automated crypto trading with EMA + RSI strategy.
+Automated multi-pair crypto trading with EMA + RSI strategy.
 
 ## Quick Start
 
@@ -61,8 +61,8 @@ Enable Futures, disable Withdrawals.
 
 - `main.py` - Entry point
 - `strategy.py` - EMA + RSI logic
-- `exchange.py` - Binance connector
-- `trading_service.py` - Trading execution
+- `exchange.py` - Exchange connector
+- `multi_pair_trading_service.py` - Multi-pair trading execution
 - `telegram_bot.py` - Notifications
 - `Dockerfile` / `docker-compose.yml` - Docker setup
 

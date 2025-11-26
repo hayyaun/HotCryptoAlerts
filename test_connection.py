@@ -20,7 +20,7 @@ def main():
     print("=" * 80)
     print(f"Exchange: {Config.EXCHANGE}")
     print(f"Testnet: {Config.TESTNET}")
-    print(f"Symbol: {Config.SYMBOL}")
+    print(f"Symbols: {', '.join(Config.SYMBOLS)}")
     print(f"Dry Run: {Config.DRY_RUN}")
     print("=" * 80)
     print()
@@ -38,15 +38,16 @@ def main():
         logger.info("✓ Exchange connector initialized successfully")
         print()
         
-        # Test: Fetch current price
-        logger.info(f"Fetching current price for {Config.SYMBOL}...")
-        price = exchange.get_current_price(Config.SYMBOL)
-        logger.info(f"✓ Current {Config.SYMBOL} price: ${price:,.2f}")
+        # Test: Fetch current price for first symbol
+        test_symbol = Config.SYMBOLS[0]
+        logger.info(f"Fetching current price for {test_symbol}...")
+        price = exchange.get_current_price(test_symbol)
+        logger.info(f"✓ Current {test_symbol} price: ${price:,.2f}")
         print()
         
         # Test: Fetch OHLCV data
         logger.info(f"Fetching OHLCV data ({Config.TIMEFRAME})...")
-        df = exchange.fetch_ohlcv(Config.SYMBOL, Config.TIMEFRAME, limit=10)
+        df = exchange.fetch_ohlcv(test_symbol, Config.TIMEFRAME, limit=10)
         logger.info(f"✓ Fetched {len(df)} candles")
         print()
         print("Latest 5 candles:")

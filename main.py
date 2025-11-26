@@ -8,7 +8,6 @@ from pathlib import Path
 from config import Config
 from strategy import PriceActionStrategy
 from exchange import ExchangeConnector
-from trading_service import TradingService
 from multi_pair_trading_service import MultiPairTradingService
 from telegram_bot import TelegramNotifier
 
@@ -51,11 +50,10 @@ def print_configuration():
     logger = logging.getLogger(__name__)
     
     logger.info("=" * 80)
-    logger.info("BTC/USDT TRADING BOT CONFIGURATION")
+    logger.info("MULTI-PAIR TRADING BOT CONFIGURATION")
     logger.info("=" * 80)
     logger.info(f"Exchange: {Config.EXCHANGE}")
     logger.info(f"Testnet: {Config.TESTNET}")
-    logger.info(f"Symbol: {Config.SYMBOL}")
     logger.info(f"Timeframe: {Config.TIMEFRAME}")
     logger.info(f"Dry Run: {Config.DRY_RUN}")
     logger.info("-" * 80)
